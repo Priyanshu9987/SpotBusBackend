@@ -13,6 +13,12 @@ const App = express();
     dotenv.config();
     db();
 
+          const cors = require("cors");
+            App.use(cors({
+             origin: "https://spotbus.netlify.app", // your frontend URL
+               credentials: true
+            }));
+
       App.use(cors());
       App.use(express.json());
       App.use(express.urlencoded({ extended:true }));
