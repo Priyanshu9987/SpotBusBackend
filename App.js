@@ -26,7 +26,7 @@ const App = express();
       App.use(express.urlencoded({ extended:true }));
 
       App.get('/', (req, res) => {
-          res.send("It is the Server");
+          res.send("It is the Server 5000");
       });
 
       App.use('/login', LoginRoute);
