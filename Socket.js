@@ -3,9 +3,15 @@ import { Server } from "socket.io";
 import UserModel from "./models/UserModel.js";
 
 export default function initSocket(httpServer) {
+
   const io = new Server(httpServer, {
-    cors: { origin: "https://spotbus.netlify.app" } // allow frontend
-  });
+  cors: {
+    origin: "https://spotbus.netlify.app", // allow frontend
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
+
 
   io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
