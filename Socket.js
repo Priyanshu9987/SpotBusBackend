@@ -4,7 +4,7 @@ import UserModel from "./models/UserModel.js";
 
 export default function initSocket(httpServer) {
   const io = new Server(httpServer, {
-    cors: { origin: "*" } // allow frontend
+    cors: { origin: "https://spotbus.netlify.app" } // allow frontend
   });
 
   io.on("connection", (socket) => {
