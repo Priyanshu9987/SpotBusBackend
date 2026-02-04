@@ -13,8 +13,7 @@ const App = express();
     dotenv.config();
     db();
 
-    const cors = require("cors");
-    app.use(cors({
+    App.use(cors({
       origin: "https://spotbus.netlify.app",
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true
