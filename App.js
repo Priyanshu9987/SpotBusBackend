@@ -19,8 +19,6 @@ const App = express();
       credentials: true
     }));
 
-
-      App.use(cors());
       App.use(express.json());
       App.use(express.urlencoded({ extended:true }));
 
