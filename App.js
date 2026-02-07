@@ -42,6 +42,6 @@ const App = express();
       ]);
 
       // App.use('/register', uploadFiles,  RegisterRoute);
-      App.post('/register', uploadFiles, RegisterRoute);
+      App.use('/register', uploadFiles, RegisterRoute);
 
       export default App;
