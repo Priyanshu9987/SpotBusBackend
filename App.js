@@ -14,7 +14,7 @@ const App = express();
     db();
 
     App.use(cors({
-      origin: "https://spotbus.netlify.app",
+      origin: ["https://spotbus.netlify.app", "https://spotbus.netlify.app/register"],
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true
     }));
