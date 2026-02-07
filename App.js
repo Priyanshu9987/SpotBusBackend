@@ -41,6 +41,7 @@ const App = express();
         { name: 'certificate', maxCount: 1},
       ]);
 
-      App.use('/register', uploadFiles,  RegisterRoute);
+      // App.use('/register', uploadFiles,  RegisterRoute);
+      App.post('/register', uploadFiles, RegisterRoute);
 
       export default App;

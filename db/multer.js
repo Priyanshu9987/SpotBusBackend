@@ -1,11 +1,20 @@
 import multer from 'multer';
+import fs from 'fs';
+import path from 'path';
+
+const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+
+// Create the folder if it doesn’t exist
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/uploads'); // files saved locally
+    cb(null, uploadDir);
   },
   filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
     cb(null, file.fieldname + '-' + uniqueSuffix);
   }
 });
@@ -13,3 +22,4 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 export default upload;
+

@@ -9,19 +9,17 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET_KEY,
 });
 
-// Cloudinary Statement
-const cloudinaryFile = async (localFilePath) => {
-  try {
-      if (!localFilePath) 
-        return null;
+  const cloudinaryFile = async (localFilePath) => { try {
+    if (!localFilePath) { throw new Error("No file path provided for Cloudinary upload");
 
-        const uploadResult = await cloudinary.uploader.upload(localFilePath);
-        return uploadResult.secure_url; 
-
-  } catch (error) {
-    console.error("Error uploading file to Cloudinary:", error);
-    return null;
-  }
-};
+      } 
+      const uploadResult = await cloudinary.uploader.upload(localFilePath, { folder: "spotbus_uploads"   // optional: organize uploads 
+      }); 
+      return uploadResult.secure_url; 
+    } catch (error) {
+      console.error("Error uploading file to Cloudinary:", error.message);
+        throw error;   // bubble up instead of returning null
+      } };
 
 export default cloudinaryFile;
+

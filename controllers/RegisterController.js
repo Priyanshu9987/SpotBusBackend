@@ -49,6 +49,12 @@ import cloudinaryFile from "../db/cloudinary.js";
 // Correct password hashing
         const hashedPassword = await bcrypt.hash(password, 10);
 
+        const uploadFile = async (file) => {
+           if (!file || !file.path) {
+             throw new Error(`Missing file: ${file?.fieldname || "unknown"}`); }
+              return await cloudinaryFile(file.path); 
+            };
+
 // Upload to Cloudinary (use .path if diskStorage)
         const driverUrl = await cloudinaryFile(driver.path);
         const conductorUrl = await cloudinaryFile(conductor.path);
